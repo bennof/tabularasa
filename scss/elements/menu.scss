@@ -1,0 +1,131 @@
+$header-background: var(--header-background,#fff) !default;
+$header-border: var(--header-border, 1px solid #ddd) !default;
+$menubar-text: var(--menubar-text, #333) !default;
+$menubar-hl-color: var(--menubar-hl-color) !default;
+
+.header {
+    padding: 7.5px;
+    background: $header-background;
+    border-bottom: $header-border;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 0 5px 2px rgb(0 0 0 / 22%);
+    color: $menubar-text;
+
+
+    .logo {
+        display: inline-block;
+        padding: 10px 10px 10px 10px;
+        flex: 1;
+        text-decoration: none;
+        font-size: 22pt;
+        font-weight: 100;
+    }
+
+    .menu {
+        & > .nav-btn-chk,
+        & > .nav-btn {
+            display: none;
+        }
+
+        ul.nav-links,
+        .nav-links {
+            display: inline;
+            list-style-type: none;
+            > * {
+                display: inline;
+            }
+            a {
+                display: inline-block;
+                padding: 13px 10px 13px 10px;
+                text-decoration: none;
+                color: $menubar-text;
+            }
+
+            a:hover{
+                color: var(--menubar-hl-color, rgb(26, 180, 134))
+            }
+
+        }
+        font-size: 18px;   
+
+        text-align: right;
+        padding-right: 0px; 
+        flex: 1;
+        align-self: flex-end;
+
+        @media (max-width: $tablet-width) {
+            .nav-btn {
+                display: inline-block;
+                position: relative;
+                z-index: 5;
+                right: 0px;
+                top: 0px;
+                width: 50px;
+                height: 50px;
+                padding: 13px;
+                cursor: pointer;
+                span {
+                    display: block;
+                    width: 25px;
+                    height: 8px;
+                    border-top: 4px solid $menubar-text;
+                }
+            }
+
+            .nav-btn:hover span {
+                border-color: $menubar-hl-color;
+            }
+
+            .nav-btn-chk:checked ~ .nav-btn span.top{
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+
+            .nav-btn-chk:checked ~ .nav-btn span.middle{
+                opacity: 0;
+            }
+
+            .nav-btn-chk:checked ~ .nav-btn span.bottom{
+                margin-top: -1rem;
+                margin-left: 0.1rem;
+                -webkit-transform: rotate(-45deg);
+                -ms-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
+
+            ul.nav-links,
+            .nav-links {
+                position: absolute;
+                z-index: 2;
+                display: block;
+                padding-top: 95px;
+                width: 75%;
+                background-color: $header-background;
+                border-left: $header-border;
+                height: 100%;
+                transition: all 0.3s ease-in;
+                overflow-y: hidden;
+                top: 0px;
+                right: 0px;
+                overflow-y: auto;
+
+                > * {
+                    display: block;
+                }
+            }
+
+            .nav-btn-chk:not(:checked) ~ .nav-links {
+                width: 0;
+            }
+
+            .nav-btn-chk:checked ~ .nav-links {
+                width: 75%;
+            }
+              
+        }
+    }
+
+
+}

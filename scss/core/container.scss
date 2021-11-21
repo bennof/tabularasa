@@ -1,0 +1,30 @@
+$page-width: var(--page-width, 980px) !default;
+$fluid-gap-width: var(--fluid-gap-width, 5px) !default;
+
+.container {
+    flex-grow: 1;
+    margin: 0 auto;
+    position: relative;
+    width: auto;
+    max-width: 100%;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    &.is-fluid{
+        max-width: none !important;
+        padding-left: $fluid-gap-width;
+        padding-right: $fluid-gap-width;
+        width: 100%;
+    }
+}
+
+.content {
+    max-width: $page-width;
+    margin: 10pt auto;
+    padding: 5px;
+
+    p, h1,h2,h3,h4,h5,h6,strong,&>ul  {
+        padding: 0 0.5rem;
+    }
+}
